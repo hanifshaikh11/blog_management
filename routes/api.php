@@ -31,5 +31,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/blog-update/{id}', [BlogController::class, 'update']);
     Route::delete('/blog-delete/{id}', [BlogController::class, 'delete']);
 
-    Route::post('/blogs/{id}/like', [BlogController::class, 'blog_like_toggle']);
+    Route::post('/blog/{id}/like', [BlogController::class, 'blog_like_toggle']);
 });

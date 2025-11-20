@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
     {
         return response()->json([
             'status'  => false,
-            'message' => 'Token missing or invalid. Please login first.',
+            'message' => 'Something went wrong, Please login first.',
         ]);
     }
 }
