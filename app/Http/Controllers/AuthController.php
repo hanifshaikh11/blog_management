@@ -33,7 +33,7 @@ class AuthController extends Controller
                 'status'  => true,
                 'message' => 'Login Successfully',
                 'token'   => $token,
-                // 'user'    => $user
+                'user'    => $user
             ]);
         } else {
             return response()->json([

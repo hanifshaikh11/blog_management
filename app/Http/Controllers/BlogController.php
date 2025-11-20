@@ -12,34 +12,19 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
-        // $blogs = Blog::where('user_id', $request->user()->id)->orderBy('id', 'DESC')->get();
-        // $blogs = Blog::where('user_id', $request->user()->id)->orderBy('id', 'DESC')->paginate(5);
-
-        /*$blogs = Blog::withCount('likes')->orderBy('id', 'DESC')->get()
-            ->map(function ($blog) {
-                $blog->is_liked = $blog->likes()
-                    ->where('user_id', auth()->id())
-                    ->exists();
-                return $blog;
-            });
-
-        return response()->json([
-            'status'  => true,
-            'message' => 'Blog List',
-            'data'    => $blogs
-        ]);*/
-
-
         $userId = auth()->id();
         $search_request = $request->search;
         $filter_request = $request->filter;
         $perPage = (int) $request->per_page;
 
-        $query = Blog::query()
-            ->withCount('likes')
-            ->with(['likes' => function ($qry) use ($userId) {
-                $qry->where('user_id', $userId);
-            }]);
+        // $query = Blog::query()
+        //     ->withCount('likes')
+        //     ->with(['likes' => function ($qry) use ($userId) {
+        //         $qry->where('user_id', $userId);
+        //     }]);
+
+        $query = Blog::withCount('likes')
+            ->with(['likes' => fn($qry) => $qry->where('user_id', $userId)]);
 
         if (!empty($search_request)) {
             $query->where(function ($qry) use ($search_request) {
@@ -62,11 +47,11 @@ class BlogController extends Controller
             $blogs = $query->paginate(10);
         }
 
-        $blogs->getCollection()->transform(function ($blog) {
-            $blog->is_liked = $blog->likes->isNotEmpty();
-            unset($blog->likes);
-            return $blog;
-        });
+        // $blogs->getCollection()->transform(function ($blog) {
+        //     $blog->is_liked = $blog->likes->isNotEmpty();
+        //     unset($blog->likes);
+        //     return $blog;
+        // });
 
         return response()->json([
             'status' => true,

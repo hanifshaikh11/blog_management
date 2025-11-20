@@ -11,7 +11,7 @@ class Blog extends Model
     use HasFactory;
 
     protected $table = 'blogs';
-    protected $appends = ['image_url', 'created_date', 'updated_date'];
+    protected $appends = ['image_url', 'created_date', 'updated_date', 'is_liked'];
 
 
     protected $fillable = [
@@ -55,5 +55,10 @@ class Blog extends Model
         return Attribute::get(function () {
             return $this->updated_at ? $this->updated_at->format('d/m/Y') : null;
         });
+    }
+
+    public function getIsLikedAttribute()
+    {
+        return $this->likes->isNotEmpty();
     }
 }
