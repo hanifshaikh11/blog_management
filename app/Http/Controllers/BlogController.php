@@ -35,7 +35,11 @@ class BlogController extends Controller
         $filter_request = $request->filter;
         $perPage = (int) $request->per_page;
 
-        $query = Blog::query()->withCount('likes');
+        $query = Blog::query()
+            ->withCount('likes')
+            ->with(['likes' => function ($qry) use ($userId) {
+                $qry->where('user_id', $userId);
+            }]);
 
         if (!empty($search_request)) {
             $query->where(function ($qry) use ($search_request) {
@@ -58,10 +62,9 @@ class BlogController extends Controller
             $blogs = $query->paginate(10);
         }
 
-        $blogs->getCollection()->transform(function ($blog) use ($userId) {
-            $blog->is_liked = $blog->likes()
-                ->where('user_id', $userId)
-                ->exists();
+        $blogs->getCollection()->transform(function ($blog) {
+            $blog->is_liked = $blog->likes->isNotEmpty();
+            unset($blog->likes);
             return $blog;
         });
 
