@@ -1,0 +1,356 @@
+{
+	"info": {
+		"_postman_id": "3989b277-a303-42d5-b72a-cf35b071f0e8",
+		"name": "Blog_Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50185903",
+		"_collection_link": "https://hanifshaikh344-3588506.postman.co/workspace/27d4c17c-6640-4b01-8758-23c20d36db4a/collection/50185903-3989b277-a303-42d5-b72a-cf35b071f0e8?action=share&source=collection_link&creator=50185903"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "hanif_blog@gmail.com",
+							"description": "charli@test.com, maria@test.com",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"description": "morgan@test.com",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "patel@test.com",
+							"description": "abc@test.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"description": "patel@test.com",
+							"type": "default"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/login",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|OmiMLGSof9VuwKViPw7M3OGHjpXkVLNhPlR9XBG9c84c701a",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/logout",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "blog-create",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 6|9n9uBlfUXypVrkJ0Rn4rfejUXFJRptixqSD2Eh2g94b50219",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Wellness Wednesday",
+							"type": "default"
+						},
+						{
+							"key": "description",
+							"value": "Test DESC 1",
+							"type": "default"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/ADMIN/OneDrive/Desktop/Images/1728644535_Egyptian Galley.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/blog-create",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"blog-create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "blog-list",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 7|W0GTS4HhnIZE3IXb00zU9l0sbmNcvPgpwZ4FZ056c212b9d5",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/blog-list",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"blog-list"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "filter",
+							"value": "most_liked",
+							"description": "most_liked, latest",
+							"disabled": true
+						},
+						{
+							"key": "search",
+							"value": "been",
+							"description": "Wednesday, been",
+							"disabled": true
+						},
+						{
+							"key": "per_page",
+							"value": "6",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "blog-update",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 6|9n9uBlfUXypVrkJ0Rn4rfejUXFJRptixqSD2Eh2g94b50219",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Wellness Wednesday",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Test DESC 1",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/ADMIN/OneDrive/Desktop/Images/images/pengu_dp.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/blog-update/7",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"blog-update",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "blog-delete",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 6|9n9uBlfUXypVrkJ0Rn4rfejUXFJRptixqSD2Eh2g94b50219",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/blog-delete/6",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"blog-delete",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "blog-like",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 9|jjwkR9PFMWZa5GHwBbVgWS0PL4uSY5vAgIZTraLu2bffbded",
+						"description": "8|4XVwjnRuA7VAsgmdWyC3Jujq3pvQhOHjNqhM1dYKe90060ef",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/blog/4/like",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"blog",
+						"4",
+						"like"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
